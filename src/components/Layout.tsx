@@ -1,16 +1,15 @@
 "use client";
-import { ReactNode, useEffect } from "react";
-import { useClient } from "@/jotai/common";
-import Header from "./Header";
-import Footer from "./Footer";
+import { ReactNode } from "react";
+import { useInitCommonState } from "@/hooks/common";
+import Header from "./header/index";
+import Footer from "./footer/index";
 
 type Props = {
   children?: ReactNode;
 };
 
 export default function Layout({ children }: Props) {
-  const [_, setClient] = useClient();
-  useEffect(() => setClient(typeof window !== "undefined"), []);
+  useInitCommonState();
 
   return (
     <main>
