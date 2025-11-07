@@ -1,4 +1,5 @@
 "use client";
+import { useSearchParams } from "next/navigation";
 import { Button, Form, Input } from "antd";
 import {
   QrcodeOutlined,
@@ -7,6 +8,7 @@ import {
   AppleOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
+import { useMemo } from "react";
 
 const others = [
   { icon: UserOutlined, text: "使用通行密钥继续" },
@@ -15,9 +17,14 @@ const others = [
 ];
 
 export default function Login() {
+  const search = useSearchParams();
+  const back = useMemo(() => {
+    const _back = search.get("back");
+    return _back ? atob(_back) : "";
+  }, []);
   const [form] = Form.useForm<{ account: string }>();
   const account = Form.useWatch("account", form);
-  console.log("account", account);
+  console.log("login", back, account);
   return (
     <main className="items-center sm:justify-center">
       <div className="sm:border sm:border-gray-300 rounded-[30px] p-[40px] sm:w-[420px] w-full">

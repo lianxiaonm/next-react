@@ -22,13 +22,18 @@ export default function Header() {
   const [isClient] = useClient();
   const [visible, setVisible] = useState(false);
 
+  const login = useCallback(() => {
+    const href = window.location.href;
+    window.location.href = `/login?back=${btoa(href)}`;
+  }, []);
+
   const open = useCallback(() => setVisible(true), []);
   const close = useCallback(() => setVisible(false), []);
 
   return (
-    <header className="flex flex-none h-[55px] items-center py-[4px] shadow px-[12px]">
+    <header className="flex flex-none h-[55px] items-center py-[4px] px-[12px]">
       <img src="/react.svg" className="ani-spin w-[32px] h-[32px]" />
-      <div className="flex gap-[12px] ml-[24px] max-sm:hidden">
+      <div className="flex gap-[16px] ml-[24px] max-sm:hidden">
         {navs.map((nav) => (
           <div
             key={nav.name}
@@ -39,7 +44,7 @@ export default function Header() {
       </div>
       <div className="flex gap-[12px] ml-auto max-sm:hidden">
         <SearchOutlined className="text-[20px] hover:text-primary" />
-        <Button className="">登录</Button>
+        <Button onClick={login}>登录</Button>
         <Button type="primary">注册</Button>
         <DownloadOutlined className="text-[20px] hover:text-primary" />
         <GlobalOutlined className="text-[20px] hover:text-primary" />
@@ -58,7 +63,7 @@ export default function Header() {
               <CloseOutlined className="ml-auto" onClick={close} />
             </div>
             <div className="flex my-[16px]">
-              <Button className="flex-1">登录</Button>
+              <Button className="flex-1" onClick={login} children="登录" />
               <Button type="primary" className="flex-1 ml-[12px]">
                 注册
               </Button>
