@@ -1,0 +1,55 @@
+@import "tailwindcss" important;
+
+@theme {
+  --color-basic: var(--color-basic);
+  --color-secondary: var(--color-secondary);
+  --color-input: var(--color-input);
+  --color-input-line: var(--color-input-line);
+  --color-card: var(--color-card);
+  --color-vessel: var(--color-vessel);
+  --color-line: var(--color-line);
+  --color-primary: var(--color-primary);
+  --color-primary-1: var(--color-primary-1);
+  --color-t-disable: var(--color-t-disable);
+  --color-t-tertiary: var(--color-t-tertiary);
+  --color-t-secondary: var(--color-t-secondary);
+  --color-t-primary: var(--color-t-primary);
+}
+
+@layer components {
+}
+
+:root {
+  --color-basic: #ffffff;
+  --color-secondary: #fafafa;
+  --color-input: #f5f5f5;
+  --color-input-line: #dddddd;
+  --color-card: #ffffff;
+  --color-vessel: #fafafa;
+  --color-line: #ededed;
+  --color-t-disable: #bfbfbf;
+  --color-t-tertiary: #9c9c9c;
+  --color-t-secondary: #757575;
+  --color-t-primary: #000000;
+  --color-primary: #fcd535;
+  --color-primary-1: #f0b90b;
+}
+
+@media (prefers-color-scheme: dark) {
+}
+
+body {
+  background: var(--color-basic);
+  color: var(--color-t-primary);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+}
