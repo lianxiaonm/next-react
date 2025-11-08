@@ -1,17 +1,16 @@
 "use client";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useCallback, useMemo, useState } from "react";
 import { Button, Form, Input } from "antd";
 import {
   QrcodeOutlined,
-  UserOutlined,
   GoogleOutlined,
   AppleOutlined,
 } from "@ant-design/icons";
-import Link from "next/link";
-import { useMemo } from "react";
+import { postLogin } from "@/api/user";
 
 const others = [
-  { icon: UserOutlined, text: "使用通行密钥继续" },
   { icon: GoogleOutlined, text: "通过 Google 继续" },
   { icon: AppleOutlined, text: "通过 Apple 继续" },
 ];
@@ -22,9 +21,15 @@ export default function Login() {
     const _back = search.get("back");
     return _back ? atob(_back) : "";
   }, []);
-  const [form] = Form.useForm<{ account: string }>();
+  const [visible, setVisible] = useState(false);
+  const [form] = Form.useForm<{ account: string; password: string }>();
   const account = Form.useWatch("account", form);
-  console.log("login", back, account);
+  const password = Form.useWatch("password", form);
+
+  const login = useCallback(async () => {
+    await postLogin({ account, password });
+  }, [account, password]);
+
   return (
     <main className="items-center sm:justify-center">
       <div className="rounded-[30px] p-[32px] w-[440px] sm:border sm:border-gray-300 max-sm:w-full max-sm:p-[24px] max-sm:pb-0">
@@ -34,17 +39,28 @@ export default function Login() {
           <QrcodeOutlined className="ml-auto cursor-pointer max-sm:hidden" />
         </div>
         <Form form={form} layout="vertical" autoComplete="off">
-          <Form.Item label="邮箱/手机号码" name="account">
+          <Form.Item label="邮箱/手机号码" name="account" className="mb-[12px]">
             <Input
               size="large"
               className="h-[48px]"
-              placeholder="邮箱/手机号码（不含国际区号）"
+              placeholder="邮箱/手机号码"
+            />
+          </Form.Item>
+          <Form.Item label="密码" name="password">
+            <Input.Password
+              size="large"
+              className="h-[48px]"
+              placeholder="请输出密码"
+              visibilityToggle={{ visible, onVisibleChange: setVisible }}
             />
           </Form.Item>
         </Form>
-        <Button type="primary" className="w-full h-[48px]">
-          继续
-        </Button>
+        <Button
+          type="primary"
+          onClick={login}
+          className="w-full h-[48px]"
+          children="登录"
+        />
         <div className="flex items-center mt-[12px]">
           <div className="flex-1 mr-[12px] h-[1px] bg-line" />
           或

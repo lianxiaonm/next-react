@@ -1,3 +1,5 @@
+import { Random } from "mockjs";
+
 export async function getResponse<T>(data: T, time = 1000) {
   return new Promise<T>((resolve, reject) => {
     setTimeout(() => {
@@ -10,9 +12,10 @@ export async function getResponse<T>(data: T, time = 1000) {
   });
 }
 
-export const mockUserInfo = {
-  uid: "xxxxxx",
-  email: "xxxx@gmail.com",
-  nickName: "回文先生",
+export const mockUserInfo = () => ({
+  uid: Random.guid(),
+  email: Random.email(),
+  nickName: Random.cname(),
+  vipLevel: Random.integer(1, 5),
   currency: "cny",
-};
+});

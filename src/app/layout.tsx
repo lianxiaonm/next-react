@@ -7,11 +7,9 @@ export const metadata = {
   title: "My Next App",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode; //
-}) {
+type Props = { children: ReactNode };
+
+export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <body>

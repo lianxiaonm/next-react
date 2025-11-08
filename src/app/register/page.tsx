@@ -1,9 +1,9 @@
 "use client";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useMemo } from "react";
 import { Button, Form, Input, Checkbox } from "antd";
 import { GoogleOutlined, AppleOutlined } from "@ant-design/icons";
-import Link from "next/link";
-import { useMemo } from "react";
 
 const others = [
   { icon: GoogleOutlined, text: "通过 Google 继续" },
