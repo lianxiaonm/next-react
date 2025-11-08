@@ -1,17 +1,18 @@
-import { resolve } from "path";
+export async function getResponse<T>(data: T, time = 1000) {
+  return new Promise<T>((resolve, reject) => {
+    setTimeout(() => {
+      if (Math.random() < 0.33) {
+        reject(new Error("fetch error"));
+      } else {
+        resolve(data);
+      }
+    }, time);
+  });
+}
 
-const codes: Record<number, string> = {
-  200: "success",
+export const mockUserInfo = {
+  uid: "xxxxxx",
+  email: "xxxx@gmail.com",
+  nickName: "回文先生",
+  currency: "cny",
 };
-
-export function getResponse<T>(code: number, data: T) {
-  return {
-    code,
-    data,
-    message: codes[code] || "fetch error",
-  };
-}
-
-export function waitTime(time = 1000) {
-  return new Promise((resolve) => setTimeout(resolve, time));
-}

@@ -1,9 +1,6 @@
 import { ReactNode } from "react";
-import { cookies } from "next/headers";
 import "@ant-design/v5-patch-for-react-19";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import AsyncState from "@/components/AsyncState";
-
 import "./layout.css";
 
 export const metadata = {

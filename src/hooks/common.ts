@@ -12,7 +12,7 @@ export const useFetchAccount = () => {
   const [_1, setCurrency] = useCurrency();
   return useCallback(async () => {
     try {
-      const { data: user } = await getUserInfo();
+      const user = await getUserInfo();
       setCurrency(user.currency);
       setAccount({ user, isLogin: true });
     } catch {
