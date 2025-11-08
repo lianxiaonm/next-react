@@ -1,20 +1,52 @@
+import { useCallback, useRef, useState } from "react";
 import { Button, Input, Popover } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-import { useCallback, useMemo, useRef } from "react";
+import Drawer from "../Drawer";
+
+type Props = { onCancel?: () => void };
+const Content = ({ onCancel }: Props) => {
+  return (
+    <div className="flex flex-col gap-[8px]">
+      <div className="flex items-center max-sm:px-[12px] max-sm:py-[16px]">
+        <Input
+          placeholder="公告，功能"
+          prefix={<SearchOutlined />}
+          className="max-sm:h-[40px] mr-[8px]"
+        />
+        <Button
+          type="text"
+          children="Cancel"
+          onClick={onCancel}
+          className="px-[2px]"
+        />
+      </div>
+    </div>
+  );
+};
+
+export const SearchMobile = () => {
+  const [visible, setVisible] = useState(false);
+  const open = useCallback(() => setVisible(true), []);
+  const close = useCallback(() => setVisible(false), []);
+
+  return (
+    <div className="px-[24px] my-[16px]">
+      <Input
+        readOnly
+        onClick={open}
+        className="h-[40px]"
+        placeholder="公告，功能"
+        prefix={<SearchOutlined />}
+      />
+      <Drawer open={visible} onClose={close} closable={false}>
+        <Content onCancel={close} />
+      </Drawer>
+    </div>
+  );
+};
 
 export default function Search() {
   const ref = useRef<any>();
-  const content = useMemo(
-    () => (
-      <div className="flex flex-col gap-[8px]" ref={ref}>
-        <div className="flex items-center gap-[8px]">
-          <Input prefix={<SearchOutlined />} />
-          <Button type="text" children="Cancel" />
-        </div>
-      </div>
-    ),
-    []
-  );
   const onOpenChange = useCallback((open: boolean) => {
     setTimeout(() => {
       if (open && ref.current) {
@@ -26,9 +58,9 @@ export default function Search() {
     <Popover
       arrow={false}
       trigger="click"
-      content={content}
       placement="bottomRight"
       onOpenChange={onOpenChange}
+      content={<div ref={ref} children={<Content />} />}
       children={<SearchOutlined className="text-[20px] hover:text-primary" />}
     />
   );

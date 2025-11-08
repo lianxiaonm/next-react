@@ -7,23 +7,36 @@ import {
   SunOutlined,
   MoonFilled,
 } from "@ant-design/icons";
-import { useClient, useAccount, useLightMode } from "@/jotai/common";
+import { useAccount, useLightMode } from "@/jotai/common";
+import { useMyResponsive } from "@/hooks/device";
 
 import Drawer from "../Drawer";
-import Search from "./Search";
+import NavItem from "./NavItem";
 import Download from "./Download";
 import User, { UserMobile } from "./User";
+import Search, { SearchMobile } from "./Search";
+
+import "./index.scss";
 
 const navs = [
-  { name: "导航一", link: "" },
-  { name: "导航二", link: "" },
-  { name: "导航三", link: "" },
-  { name: "导航四", link: "" },
+  { icon: "", title: "协议", linkURL: "/term", tag: "", navs: [] },
+  { icon: "", title: "隐私", linkURL: "/privacy", tag: "beta", navs: [] },
+  {
+    icon: "",
+    title: "子菜单",
+    linkURL: "",
+    tag: "new", //
+    navs: [
+      {
+        title: "子菜单一",
+      },
+    ],
+  },
 ];
 
 export default function Header() {
-  const [isClient] = useClient();
   const [{ isLogin }] = useAccount();
+  const { mobile } = useMyResponsive();
   const [isLight, setLightMode] = useLightMode();
   const [visible, setVisible] = useState(false);
 
@@ -52,11 +65,11 @@ export default function Header() {
           <Button onClick={login}>登录</Button>
           <Button type="primary" onClick={register} children="注册" />
         </Fragment>,
-        <div className="flex my-[16px]">
-          <Button className="flex-1" onClick={login} children="登录" />
+        <div className="flex my-[16px] px-[24px] gap-[12px]">
+          <Button className="flex-1 h-[40px]" onClick={login} children="登录" />
           <Button
             type="primary"
-            className="flex-1 ml-[12px]"
+            className="flex-1 h-[40px]"
             onClick={register}
             children="注册"
           />
@@ -69,15 +82,12 @@ export default function Header() {
   return (
     <header className="flex flex-none h-[55px] items-center py-[4px] px-[12px]">
       <img src="/react.svg" className="ani-spin w-[32px] h-[32px]" />
-      <div className="flex gap-[16px] ml-[24px] max-sm:hidden">
-        {navs.map((nav) => (
-          <div
-            key={nav.name}
-            children={nav.name}
-            className="text-[16px] text-t-primary hover:text-primary-1 cursor-pointer"
-          />
+      <div className="nav-warpper h-full ml-[24px] max-sm:hidden ">
+        {navs.map((nav: any) => (
+          <NavItem {...nav} key={nav.title} />
         ))}
       </div>
+
       <div className="flex gap-[12px] ml-auto max-sm:hidden">
         <Search />
         {userNode}
@@ -90,18 +100,19 @@ export default function Header() {
       </div>
 
       {/* mobile */}
-      <div className="flex gap-[12px] ml-auto sm:hidden">
-        {isLogin ? mobileUserNode : null}
-        <MenuOutlined
-          onClick={open}
-          className="text-gray-700 active:text-primary"
-        />
-        {isClient && (
-          <Drawer visible={visible} onClose={close}>
+      {!!mobile && (
+        <div className="flex gap-[12px] ml-auto sm:hidden">
+          {isLogin ? mobileUserNode : null}
+          <MenuOutlined
+            onClick={open}
+            className="text-gray-700 active:text-primary"
+          />
+          <Drawer open={visible} onClose={close} placement="right">
             {!isLogin ? mobileUserNode : null}
+            <SearchMobile />
           </Drawer>
-        )}
-      </div>
+        </div>
+      )}
     </header>
   );
 }

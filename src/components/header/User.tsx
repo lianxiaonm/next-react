@@ -13,9 +13,9 @@ export const UserMobile = () => {
   return (
     <Fragment>
       <UserOutlined className="text-[20px] hover:text-primary" onClick={open} />
-      <Drawer visible={visible} onClose={close}></Drawer>
+      <Drawer open={visible} onClose={close} placement="right"></Drawer>
     </Fragment>
-  );
+  );{}
 };
 
 export default function User() {
