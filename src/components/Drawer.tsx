@@ -1,18 +1,35 @@
-import { CloseOutlined } from "@ant-design/icons";
 import { ReactNode } from "react";
+import { Drawer as Drawer1 } from "antd";
+import { useClient } from "@/jotai/common";
+import { useMyResponsive } from "@/hooks/device";
 
 type Props = {
-  visible: boolean;
+  open: boolean;
   onClose: () => void;
+  closable?: boolean;
   children?: ReactNode;
+  placement?: "left" | "top" | "right" | "bottom";
 };
-export default function Drawer({ visible, onClose, children }: Props) {
-  return visible ? (
-    <div className="fixed inset-0 flex flex-col pt-[24px] bg-basic">
-      <div className="flex flex-none text-[24px] px-[16px]">
-        <CloseOutlined className="ml-auto" onClick={onClose} />
-      </div>
-      <div className="flex-1 overflow-y-auto" children={children} />
-    </div>
+export default function Drawer({
+  open,
+  placement,
+  closable = true,
+  onClose,
+  children,
+}: Props) {
+  const [isClient] = useClient();
+  const { mobile } = useMyResponsive();
+  const width = mobile ? "100%" : 378;
+
+  return isClient ? (
+    <Drawer1
+      open={open}
+      width={width}
+      onClose={onClose}
+      children={children}
+      placement={placement}
+      classNames={{ body: "p-0" }}
+      closable={closable && { placement: "end" }}
+    />
   ) : null;
 }

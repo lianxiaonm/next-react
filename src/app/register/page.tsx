@@ -1,25 +1,26 @@
 "use client";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { useMemo } from "react";
+import { useCallback } from "react";
 import { Button, Form, Input, Checkbox } from "antd";
 import { GoogleOutlined, AppleOutlined } from "@ant-design/icons";
+import { postRegister } from "@/api/user";
 
 const others = [
   { icon: GoogleOutlined, text: "通过 Google 继续" },
   { icon: AppleOutlined, text: "通过 Apple 继续" },
 ];
 
+type RegisterForm = { account: string; agree: boolean };
+
 export default function Register() {
-  const search = useSearchParams();
-  const back = useMemo(() => {
-    const _back = search.get("back");
-    return _back ? atob(_back) : "";
-  }, []);
-  const [form] = Form.useForm<{ account: string }>();
+  const [form] = Form.useForm<RegisterForm>();
   const account = Form.useWatch("account", form);
   const agree = Form.useWatch("agree", form);
-  console.log("login", back, account, agree);
+
+  const regitser = useCallback(async () => {
+    await postRegister({ account });
+  }, [account]);
+
   return (
     <main className="items-center sm:justify-center">
       <div className="rounded-[30px] p-[32px] w-[440px] sm:border sm:border-gray-300 max-sm:w-full max-sm:p-[24px] max-sm:pb-0">
@@ -53,9 +54,13 @@ export default function Register() {
             </Checkbox>
           </Form.Item>
         </Form>
-        <Button type="primary" className="w-full h-[48px]" disabled={!agree}>
-          继续
-        </Button>
+        <Button
+          type="primary"
+          className="w-full h-[48px]"
+          disabled={!agree}
+          onClick={regitser}
+          children="注册"
+        />
         <div className="flex items-center mt-[12px]">
           <div className="flex-1 mr-[12px] h-[1px] bg-line" />
           或

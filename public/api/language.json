@@ -1,0 +1,242 @@
+[
+  {
+    "target": "en",
+    "mapTo": "en",
+    "name": "English"
+  },
+  {
+    "target": "zh-CN",
+    "mapTo": "zh-CN",
+    "name": "简体中文"
+  },
+  {
+    "target": "zh-TC",
+    "mapTo": "zh-TC",
+    "name": "繁體中文"
+  },
+  {
+    "target": "ru",
+    "mapTo": "ru",
+    "name": "Русский"
+  },
+  {
+    "target": "es",
+    "mapTo": "es",
+    "name": "Español (España)"
+  },
+  {
+    "target": "es-LA",
+    "mapTo": "es-LA",
+    "name": "Español (Latinoamérica)"
+  },
+  {
+    "target": "fr",
+    "mapTo": "fr",
+    "name": "Français"
+  },
+  {
+    "target": "vi",
+    "mapTo": "vi",
+    "name": "Tiếng Việt"
+  },
+  {
+    "target": "en-TR",
+    "mapTo": "en-TR",
+    "name": "English (Türkiye)"
+  },
+  {
+    "target": "it",
+    "mapTo": "it",
+    "name": "Italiano"
+  },
+  {
+    "target": "pl",
+    "mapTo": "pl",
+    "name": "Polski"
+  },
+  {
+    "target": "id",
+    "mapTo": "id",
+    "name": "Bahasa Indonesia"
+  },
+  {
+    "target": "uk-UA",
+    "mapTo": "uk-UA",
+    "name": "Українська"
+  },
+  {
+    "target": "ar",
+    "mapTo": "ar",
+    "name": "العربية"
+  },
+  {
+    "target": "en-AU",
+    "mapTo": "en-AU",
+    "name": "English (Australia)"
+  },
+  {
+    "target": "pt-BR",
+    "mapTo": "pt-BR",
+    "name": "Português (Brasil)"
+  },
+  {
+    "target": "en-IN",
+    "mapTo": "en-IN",
+    "name": "English (India)"
+  },
+  {
+    "target": "en-NG",
+    "mapTo": "en-NG",
+    "name": "English (Nigeria)"
+  },
+  {
+    "target": "ro",
+    "mapTo": "ro",
+    "name": "Română"
+  },
+  {
+    "target": "bg",
+    "mapTo": "bg",
+    "name": "български"
+  },
+  {
+    "target": "cs",
+    "mapTo": "cs",
+    "name": "čeština"
+  },
+  {
+    "target": "lv",
+    "mapTo": "lv",
+    "name": "latviešu valoda"
+  },
+  {
+    "target": "sv",
+    "mapTo": "sv",
+    "name": "svenska"
+  },
+  {
+    "target": "pt",
+    "mapTo": "pt",
+    "name": "Português (Portugal)"
+  },
+  {
+    "target": "es-MX",
+    "mapTo": "es-MX",
+    "name": "Español (México)"
+  },
+  {
+    "target": "el",
+    "mapTo": "el",
+    "name": "Ελληνικά"
+  },
+  {
+    "target": "sk",
+    "mapTo": "sk",
+    "name": "Slovenčina"
+  },
+  {
+    "target": "sl",
+    "mapTo": "sl",
+    "name": "Slovenščina"
+  },
+  {
+    "target": "es-AR",
+    "mapTo": "es-AR",
+    "name": "Español (Argentina)"
+  },
+  {
+    "target": "fr-AF",
+    "mapTo": "fr-AF",
+    "name": "Français (Afrique)"
+  },
+  {
+    "target": "en-KZ",
+    "mapTo": "en-KZ",
+    "name": "English (Kazakhstan)"
+  },
+  {
+    "target": "en-ZA",
+    "mapTo": "en-ZA",
+    "name": "English (South Africa)"
+  },
+  {
+    "target": "en-NZ",
+    "mapTo": "en-NZ",
+    "name": "English (New Zealand)"
+  },
+  {
+    "target": "en-BH",
+    "mapTo": "en-BH",
+    "name": "English (Bahrain)"
+  },
+  {
+    "target": "ar-BH",
+    "mapTo": "ar-BH",
+    "name": "العربية (البحرين)"
+  },
+  {
+    "target": "ru-UA",
+    "mapTo": "ru-UA",
+    "name": "Русский (Украина)"
+  },
+  {
+    "target": "de",
+    "mapTo": "de",
+    "name": "Deutsch"
+  },
+  {
+    "target": "kk-KZ",
+    "mapTo": "kk-KZ",
+    "name": "Қазақша"
+  },
+  {
+    "target": "ru-KZ",
+    "mapTo": "ru-KZ",
+    "name": "Русский (Казахстан)"
+  },
+  {
+    "target": "ja",
+    "mapTo": "ja",
+    "name": "日本語"
+  },
+  {
+    "target": "da-DK",
+    "mapTo": "da-DK",
+    "name": "Dansk"
+  },
+  {
+    "target": "en-AE",
+    "mapTo": "en-AE",
+    "name": "English (UAE)"
+  },
+  {
+    "target": "en-JP",
+    "mapTo": "en-JP",
+    "name": "English (Japan)"
+  },
+  {
+    "target": "hu",
+    "mapTo": "hu",
+    "name": "magyar nyelv"
+  },
+  {
+    "target": "lo-LA",
+    "mapTo": "lo-LA",
+    "name": "ລາວ"
+  },
+  {
+    "target": "si-LK",
+    "mapTo": "si-LK",
+    "name": "සිංහල"
+  },
+  {
+    "target": "az-AZ",
+    "mapTo": "az-AZ",
+    "name": "Azərbaycan"
+  },
+  {
+    "target": "uz-UZ",
+    "mapTo": "uz-UZ",
+    "name": "Oʻzbekcha"
+  }
+]

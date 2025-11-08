@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { Button, Form, Input } from "antd";
 import {
   QrcodeOutlined,
@@ -15,14 +14,11 @@ const others = [
   { icon: AppleOutlined, text: "通过 Apple 继续" },
 ];
 
+type LoginForm = { account: string; password: string };
+
 export default function Login() {
-  const search = useSearchParams();
-  const back = useMemo(() => {
-    const _back = search.get("back");
-    return _back ? atob(_back) : "";
-  }, []);
   const [visible, setVisible] = useState(false);
-  const [form] = Form.useForm<{ account: string; password: string }>();
+  const [form] = Form.useForm<LoginForm>();
   const account = Form.useWatch("account", form);
   const password = Form.useWatch("password", form);
 

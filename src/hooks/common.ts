@@ -12,6 +12,7 @@ export const useFetchAccount = () => {
   const [_1, setCurrency] = useCurrency();
   return useCallback(async () => {
     try {
+      throw 123;
       const user = await getUserInfo();
       setCurrency(user.currency);
       setAccount({ user, isLogin: true });
@@ -21,16 +22,22 @@ export const useFetchAccount = () => {
   }, []);
 };
 
+export const useInitSimpleState = () => {
+  const [client, setClient] = useClient();
+  useEffect(() => {
+    client || setClient(typeof window !== "undefined");
+  }, []);
+};
+
 export const useInitCommonState = () => {
-  const fetchAccount = useFetchAccount();
+  const [client] = useClient();
   const [_, setCurrency] = useCurrency();
   const [_1, setLanguage] = useLanguage();
-  const [client, setClient] = useClient();
+  const fetchAccount = useFetchAccount();
 
   useEffect(() => {
     // init once
     if (!client) {
-      setClient(typeof window !== "undefined");
       console.log("---initCommonState----");
       const _language = "zh-CN"; // read language
       const _currency = "usd";
