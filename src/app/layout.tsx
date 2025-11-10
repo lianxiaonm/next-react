@@ -5,8 +5,6 @@ import { fetchFooter, fetchHeader } from "@/api/common";
 import Layout from "@/components/Layout";
 import "../global.css";
 
-import header from "../../public/api/header.json";
-
 export const metadata = { title: "My Next App" };
 
 type Props = { children: ReactNode };
