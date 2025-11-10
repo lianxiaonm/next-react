@@ -10,12 +10,7 @@ export const metadata = { title: "My Next App" };
 type Props = { children: ReactNode };
 
 export default async function RootLayout({ children }: Props) {
-  const [header, footer] = await Promise.all([
-    require("../../public/api/header.json"),
-    require("../../public/api/footer.json"),
-    // fetchHeader(),
-    // fetchFooter(),
-  ]);
+  const [header, footer] = await Promise.all([fetchHeader(), fetchFooter()]);
   console.log("layout", header, footer);
 
   return (
