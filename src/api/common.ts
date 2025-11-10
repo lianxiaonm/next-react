@@ -1,5 +1,5 @@
 import { fetchRequest as fetch } from "@/util/http";
-const prefix = typeof window === "undefined" ? "http://localhost:3000" : "";
+const prefix = typeof window === "undefined" ? "http://127.0.0.1:3000" : "";
 
 export const fetchHeader = async () => {
   return fetch(`${prefix}/api/header.json`).catch(() => ({}));
