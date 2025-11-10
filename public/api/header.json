@@ -1,0 +1,48 @@
+{
+  "navList": [
+    { "icon": "", "title": "协议", "linkURL": "/term", "tag": "" },
+    { "icon": "", "title": "隐私", "linkURL": "/privacy", "tag": "beta" },
+    {
+      "icon": "",
+      "title": "子菜单",
+      "linkURL": "",
+      "tag": "new",
+      "navs": [
+        {
+          "title": "子菜单一",
+          "list": [
+            {
+              "icon": "",
+              "title": "协议一",
+              "description": "描述一",
+              "linkURL": "/term"
+            },
+            {
+              "icon": "",
+              "title": "隐私一",
+              "description": "隐私一",
+              "linkURL": "/privacy"
+            }
+          ]
+        },
+        {
+          "title": "子菜单二",
+          "list": [
+            {
+              "icon": "",
+              "title": "协议二",
+              "description": "描述二",
+              "linkURL": "/term"
+            },
+            {
+              "icon": "",
+              "title": "隐私二",
+              "description": "隐私二",
+              "linkURL": "/privacy"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

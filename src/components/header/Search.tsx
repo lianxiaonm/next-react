@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import { Button, Input, Popover } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
+import { SearchOutlined, CloseOutlined } from "@ant-design/icons";
 import Drawer from "../Drawer";
 
 type Props = { onCancel?: () => void };
@@ -13,12 +13,7 @@ const Content = ({ onCancel }: Props) => {
           prefix={<SearchOutlined />}
           className="max-sm:h-[40px] mr-[8px]"
         />
-        <Button
-          type="text"
-          children="Cancel"
-          onClick={onCancel}
-          className="px-[2px]"
-        />
+        <Button type="text" onClick={onCancel} icon={<CloseOutlined />} />
       </div>
     </div>
   );
@@ -38,9 +33,12 @@ export const SearchMobile = () => {
         placeholder="公告，功能"
         prefix={<SearchOutlined />}
       />
-      <Drawer open={visible} onClose={close} closable={false}>
-        <Content onCancel={close} />
-      </Drawer>
+      <Drawer
+        open={visible}
+        onClose={close}
+        closable={false}
+        children={<Content onCancel={close} />}
+      />
     </div>
   );
 };
