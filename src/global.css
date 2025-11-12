@@ -16,9 +16,6 @@
   --color-t-primary: var(--color-t-primary);
 }
 
-@layer components {
-}
-
 :root {
   --color-basic: #ffffff;
   --color-secondary: #fafafa;
@@ -56,4 +53,17 @@ main {
   width: 100vw;
   height: 100vh;
   overflow-y: auto;
+}
+
+.ani-spin {
+  animation: spin infinite 20s linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

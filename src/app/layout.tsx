@@ -1,22 +1,23 @@
 import { ReactNode } from "react";
 import "@ant-design/v5-patch-for-react-19";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { fetchFooter, fetchHeader } from "@/api/common";
 import Layout from "@/components/Layout";
-import "./layout.css";
+import "../global.css";
 
-
-export const metadata = {
-  title: "My Next App",
-};
+export const metadata = { title: "My Next App" };
 
 type Props = { children: ReactNode };
 
-export default function RootLayout({ children }: Props) {
+export default async function RootLayout({ children }: Props) {
+  const [header, footer] = await Promise.all([fetchHeader(), fetchFooter()]);
+  console.log("layout", header, footer);
+
   return (
     <html lang="en">
       <body>
         <AntdRegistry>
-          <Layout>{children}</Layout>
+          <Layout header={header} children={children} />
         </AntdRegistry>
       </body>
     </html>

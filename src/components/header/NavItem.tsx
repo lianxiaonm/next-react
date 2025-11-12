@@ -4,24 +4,30 @@ import { cond } from "lodash-es";
 import { Popover } from "antd";
 import { CaretDownOutlined } from "@ant-design/icons";
 
-type Props = {
+export type NavProps = {
   tag?: "new" | "beta";
   icon: string;
   title: string;
   linkURL?: string;
   description?: string;
-  navs: Array<{ title: string; navs: Array<Omit<Props, "navs">> }>;
+  navs: Array<{ title: string; list: Array<Omit<NavProps, "navs">> }>;
 };
 
-export const NavItemMobile = ({ tag, icon, title, linkURL, navs }: Props) => {
+export const NavItemMobile = ({
+  tag,
+  icon,
+  title,
+  linkURL,
+  navs,
+}: NavProps) => {
   return null;
 };
 
-const Content = ({ navs }: { navs: Props["navs"] }) => {
+const Content = ({ navs }: { navs: NavProps["navs"] }) => {
   return null;
 };
 
-export default function NavItem({ tag, title, linkURL, navs }: Props) {
+export default function NavItem({ tag, title, linkURL, navs }: NavProps) {
   const [open, setOpen] = useState(false);
   const hasChildNav = navs && navs.length > 0;
 

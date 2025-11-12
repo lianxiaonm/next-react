@@ -11,30 +11,20 @@ import { useAccount, useLightMode } from "@/jotai/common";
 import { useMyResponsive } from "@/hooks/device";
 
 import Drawer from "../Drawer";
-import NavItem from "./NavItem";
-import Download from "./Download";
-import User, { UserMobile } from "./User";
+import NavItem, { NavProps } from "./NavItem";
 import Search, { SearchMobile } from "./Search";
+import User, { UserMobile } from "./User";
+import Download from "./Download";
 
 import "./index.scss";
 
-const navs = [
-  { icon: "", title: "协议", linkURL: "/term", tag: "", navs: [] },
-  { icon: "", title: "隐私", linkURL: "/privacy", tag: "beta", navs: [] },
-  {
-    icon: "",
-    title: "子菜单",
-    linkURL: "",
-    tag: "new", //
-    navs: [
-      {
-        title: "子菜单一",
-      },
-    ],
-  },
-];
+export type IHeaderProps = {
+  navList?: NavProps[];
+};
 
-export default function Header() {
+export default function Header({
+  navList = [], //
+}: IHeaderProps) {
   const [{ isLogin }] = useAccount();
   const { mobile } = useMyResponsive();
   const [isLight, setLightMode] = useLightMode();
@@ -83,7 +73,7 @@ export default function Header() {
     <header className="flex flex-none h-[55px] items-center py-[4px] px-[12px]">
       <img src="/react.svg" className="ani-spin w-[32px] h-[32px]" />
       <div className="nav-warpper h-full ml-[24px] max-sm:hidden ">
-        {navs.map((nav: any) => (
+        {navList.map((nav: any) => (
           <NavItem {...nav} key={nav.title} />
         ))}
       </div>
